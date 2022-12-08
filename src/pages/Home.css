@@ -22,11 +22,13 @@
   max-width: 500px;
   color: #2a9d8f;
   padding: 2rem 0;
+  text-align: center;
 }
 
 .home__sub-title {
   color: #242424;
   letter-spacing: 1.5px;
+  text-align: center;
 }
 
 .home__search--container {
