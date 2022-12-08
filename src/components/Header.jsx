@@ -4,7 +4,7 @@ import MovieIcon from "@mui/icons-material/Movie";
 import SearchIcon from "@mui/icons-material/Search";
 import { useState } from "react";
 
-function Header({search}) {
+function Header({ search }) {
   const [searchInput, setSearchInput] = useState("");
 
   return (
@@ -18,7 +18,7 @@ function Header({search}) {
             </div>
           </div>
           <div className="header__links">
-            <a className="header__link" href="#">
+            <a className="header__link" href="/">
               Home
             </a>
             <a className="header__link" href="#">
@@ -32,19 +32,20 @@ function Header({search}) {
           </div>
         </div>
         {search && (
-        <div className="search__container">
-          <span className="search__title">Browse Our Films</span>
-          <div className="searchBox">
-            <input
-              className="search__input"
-              type="text"
-              placeholder="Search..."
-              onChange={(e) => setSearchInput(e.target.value)}
-            />
-
-            <SearchIcon className="search__icon" />
+          <div className="search__container">
+            <span className="search__title">Browse Our Films</span>
+            <div className="searchBox">
+              <input
+                value={searchInput}
+                className="search__input"
+                type="text"
+                placeholder="Search..."
+                onChange={(e) => setSearchInput(e.target.value)}
+              />
+              <SearchIcon className="search__icon" />
+            </div>
           </div>
-        </div>)}
+        )}
       </div>
     </div>
   );

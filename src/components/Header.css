@@ -1,6 +1,5 @@
 .header {
-  color: white;
-  background-color: #2a9d8f;
+  color: #2a9d8f;
   padding: 20px 0;
 }
 
@@ -39,8 +38,8 @@
 }
 
 .header__link--button {
-  color: #2a9d8f;
-  background-color: white;
+  color: #fff;
+  background-color: #2a9d8f;
 }
 
 .header__link--button:hover {
