@@ -1,22 +1,50 @@
 import React from "react";
 import "./Header.css";
 import MovieIcon from "@mui/icons-material/Movie";
+import SearchIcon from "@mui/icons-material/Search";
+import { useState } from "react";
 
-function Header() {
+function Header({search}) {
+  const [searchInput, setSearchInput] = useState("");
+
   return (
     <div className="header">
       <div className="container">
-        <div className="logo__container">
-          <h1>Flicker</h1>
-          <div className="logo__icon">
-            <MovieIcon />
+        <div className="header__container">
+          <div className="logo__container">
+            <h3>Flicker</h3>
+            <div className="logo__icon">
+              <MovieIcon />
+            </div>
+          </div>
+          <div className="header__links">
+            <a className="header__link" href="#">
+              Home
+            </a>
+            <a className="header__link" href="#">
+              Find your movie
+            </a>
+            <a href="/contact">
+              <button className="header__link header__link--button">
+                Contact
+              </button>
+            </a>
           </div>
         </div>
-        <div className="header__links">
-          <a className="header__link" href="#">Home</a>
-          <a className="header__link" href="#">Find your movie</a>
-          <a href="/contact"><button className="header__link header__link--button">Contact</button></a>
-        </div>
+        {search && (
+        <div className="search__container">
+          <span className="search__title">Browse Our Films</span>
+          <div className="searchBox">
+            <input
+              className="search__input"
+              type="text"
+              placeholder="Search..."
+              onChange={(e) => setSearchInput(e.target.value)}
+            />
+
+            <SearchIcon className="search__icon" />
+          </div>
+        </div>)}
       </div>
     </div>
   );
