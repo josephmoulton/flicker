@@ -13,7 +13,7 @@ function Home() {
         <Header />
         <div className="home__container">
           <h1 className="home__title">
-            England's most awarded film subscription platform
+            England's most awarded Movie database platform
           </h1>
           <h3 className="home__sub-title">
             {"Find your perfect film with".toUpperCase()}
