@@ -3,15 +3,20 @@ import "./Testing.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../components/Header";
+import { Link, useParams } from "react-router-dom";
+
+
 
 function Testing() {
+
+  const { searchResult } = useParams();
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
 
   async function fetchMovies() {
     setLoading(true);
     const { data } = await axios.get(
-      "https://api.themoviedb.org/3/search/movie?api_key=72df3e39ae70f2a87b61200cd97ee96b&language=en-US&query=you&page=2"
+      `https://api.themoviedb.org/3/search/movie?api_key=72df3e39ae70f2a87b61200cd97ee96b&language=en-US&query=${searchResult}&page=1`
     );
     console.log(data.results);
     setMovies(data.results);

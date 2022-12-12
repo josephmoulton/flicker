@@ -3,6 +3,7 @@ import "./Header.css";
 import MovieIcon from "@mui/icons-material/Movie";
 import SearchIcon from "@mui/icons-material/Search";
 import { useState } from "react";
+import {Link} from "react-router-dom"
 
 function Header({ search }) {
   const [searchInput, setSearchInput] = useState("");
@@ -18,9 +19,9 @@ function Header({ search }) {
             </div>
           </div>
           <div className="header__links">
-            <a className="header__link" href="/">
+            <Link to="/" className="header__link">
               Home
-            </a>
+            </Link>
             <a className="header__link" href="#">
               Find your movie
             </a>
