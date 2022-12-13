@@ -6,6 +6,7 @@ import { useState } from "react";
 import movieImage from "../assets/undraw_horror_movie_3988.svg";
 import { Navigate, useNavigate } from "react-router-dom";
 
+
 function Home() {
 
   const [searchInput, setSearchInput] = useState("");

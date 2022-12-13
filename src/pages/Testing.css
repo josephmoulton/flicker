@@ -9,7 +9,7 @@
   }
   
   .user {
-    width: 50%;
+    width: 25%;
   }
   
   .user-card {
@@ -31,4 +31,26 @@
 
   .movie__poster{
     width: 100%;
+  }
+  
+  .post__search {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .post__search--container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .post__search--label {
+    padding-right: 8px;
+  }
+
+  .post__search--input{
+    width: 3%;
+    height: 3%;
   }

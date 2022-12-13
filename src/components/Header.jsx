@@ -4,15 +4,18 @@ import MovieIcon from "@mui/icons-material/Movie";
 import SearchIcon from "@mui/icons-material/Search";
 import { useState } from "react";
 import {Link} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 function Header({ search }) {
   const [searchInput, setSearchInput] = useState("");
+  const goHome = () => navigate("/");
+  const navigate = useNavigate();
 
   return (
     <div className="header">
       <div className="container">
         <div className="header__container">
-          <div className="logo__container">
+          <div className="logo__container" onClick={goHome}>
             <h3>Flicker</h3>
             <div className="logo__icon">
               <MovieIcon />
