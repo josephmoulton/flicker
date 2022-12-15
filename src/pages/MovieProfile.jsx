@@ -11,8 +11,6 @@ function MovieProfile() {
   const [genres, setGenres] = useState([]);
   const [film, setFilm] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [releaseYear, setReleaseYear] = useState("");
-  const [releaseDate, setReleaseDate] = useState("");
 
   async function fetchMovie() {
     setLoading(true);
@@ -22,12 +20,6 @@ function MovieProfile() {
     setFilm(data);
     setGenres(data.genres);
     setLoading(false);
-  }
-
-  function getReleaseYear() {
-    const result = releaseDate.split("-");
-    const [first, second, third] = result;
-    setReleaseYear(first);
   }
 
   useEffect(() => {
@@ -65,8 +57,32 @@ function MovieProfile() {
               <div className="film__title--conatiner">
                 <h1 className="film__title">
                   {film.title}{" "}
-                  <span className="film__year">({film?.release_date?.split("-")[0]})</span>
+                  <span className="film__year">
+                    ({film?.release_date?.split("-")[0]})
+                  </span>
                 </h1>
+                <div className="film__subtitle--container">
+                  <div className="release">{film?.release_date}</div>
+                  <div className="dot"> • </div>
+                  {genres.map((genre) => (
+                    <div key={genre.id} className="genres__container">
+                      <span>{genre.name}</span>
+                      <div className="dot"> • </div>
+                    </div>
+                  ))}
+                  <div className="runtime">
+                    {Math.floor(film?.runtime / 60)}h {film?.runtime % 60}m
+                  </div>
+                </div>
+                <div className="tagline">
+                  {film?.tagline}
+                </div>
+                <div className="film__info">
+                  <h3 className="overview">Overview</h3>
+                  <p className="overview__text">
+                    {film?.overview}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
