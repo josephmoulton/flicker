@@ -27,6 +27,8 @@
 .film__data--container {
   padding: 30px 40px;
   display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .film__poster--container {
@@ -74,28 +76,87 @@
   font-size: 16px;
 }
 
-.dot{
+.dot {
   padding: 0px 4px;
 }
 
-.genres__container{
+.genres__container {
   display: flex;
 }
 
-.tagline{
+.tagline {
   padding-top: 4px;
   font-size: 18px;
   font-style: italic;
   color: #d3d3d3;
 }
 
-.overview{
-  margin: 1rem 0;
-  font-weight: 400;
+.overview {
+  margin: 1rem 0 0.5rem;
+  font-weight: 700;
   font-size: 20px;
 }
 
-.overview__text{
+.overview__text {
   font-size: 14px;
   font-weight: 400;
+}
+
+.stats__container {
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  max-width: 50vw;
+  justify-content: space-between;
+}
+
+.user__container{
+  display: flex;
+  align-items: center;
+}
+.review__container {
+  width: 4rem;
+  transition: all ease 400ms;
+}
+
+.review__container:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 3px 5px #242424);
+}
+
+.user-score {
+  padding-left: 10px;
+  max-width: 3rem;
+}
+
+
+.budget , .revenue{
+  display: flex;
+  align-items: center;
+}
+
+.money{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 6px;
+}
+
+.money__icon{
+  color: #e9c46a;
+}
+
+.money__title{
+  font-weight: 700;
+}
+
+.film__info{
+  max-width: 50vw;
+}
+
+.production__container{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2rem;
+  max-width: 50vw;
 }

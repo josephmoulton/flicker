@@ -5,6 +5,15 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import placeholderImage from "../assets/DefaultPoster.png";
 import Header from "../components/Header";
+import {
+  CircularProgressbar,
+  CircularProgressbarWithChildren,
+  buildStyles,
+} from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+import PaidIcon from "@mui/icons-material/Paid";
+import SellIcon from "@mui/icons-material/Sell";
+import IconWithTag from "../components/IconWithTag";
 
 function MovieProfile() {
   const { id } = useParams();
@@ -15,7 +24,10 @@ function MovieProfile() {
   async function fetchMovie() {
     setLoading(true);
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/movie/458156?api_key=72df3e39ae70f2a87b61200cd97ee96b`
+      `https://api.themoviedb.org/3/movie/${id.replace(
+        ":",
+        ""
+      )}?api_key=72df3e39ae70f2a87b61200cd97ee96b`
     );
     setFilm(data);
     setGenres(data.genres);
@@ -74,14 +86,57 @@ function MovieProfile() {
                     {Math.floor(film?.runtime / 60)}h {film?.runtime % 60}m
                   </div>
                 </div>
-                <div className="tagline">
-                  {film?.tagline}
+                <div className="tagline">{film?.tagline}</div>
+                <div className="stats__container">
+                  <div className="user__container">
+                    <div className="review__container">
+                      <CircularProgressbarWithChildren
+                        value={film?.vote_average?.toFixed(1)}
+                        maxValue={10}
+                        background
+                        backgroundPadding={6}
+                        styles={buildStyles({
+                          backgroundColor: "#242424",
+                          textColor: "#fff",
+                          pathColor: "#32cd32",
+                          trailColor: "#006400",
+                        })}
+                      >
+                        <div style={{ fontSize: 16 }}>{`${
+                          film?.vote_average?.toFixed(1) * 10
+                        }%`}</div>
+                      </CircularProgressbarWithChildren>
+                    </div>
+                    <h4 className="user-score">User Score</h4>
+                  </div>
+                  <div className="budget">
+                    <PaidIcon className="money__icon" />
+                    <div className="money">
+                      <p className="money__title">Budget:</p>
+                      <p>${film?.budget?.toLocaleString()}.00</p>
+                    </div>
+                  </div>
+                  <div className="revenue">
+                    <SellIcon className="money__icon" />
+                    <div className="money">
+                      <p className="money__title">Revenue:</p>
+                      <p>${film?.revenue?.toLocaleString()}.00</p>
+                    </div>
+                  </div>
                 </div>
                 <div className="film__info">
                   <h3 className="overview">Overview</h3>
-                  <p className="overview__text">
-                    {film?.overview}
-                  </p>
+                  <p className="overview__text">{film?.overview}</p>
+                </div>
+                <div className="production__container">
+                  {film?.production_companies?.map((company) => (
+                    <IconWithTag
+                      key={company.id}
+                      name={company.name}
+                      logoPath={company.logo_path}
+                      originCountry={company.origin_country}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
