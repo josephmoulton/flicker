@@ -14,12 +14,14 @@ import "react-circular-progressbar/dist/styles.css";
 import PaidIcon from "@mui/icons-material/Paid";
 import SellIcon from "@mui/icons-material/Sell";
 import IconWithTag from "../components/IconWithTag";
+import Credit from "../components/Credit";
 
 function MovieProfile() {
   const { id } = useParams();
   const [genres, setGenres] = useState([]);
   const [film, setFilm] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [credits, setCredits] = useState([]);
 
   async function fetchMovie() {
     setLoading(true);
@@ -34,8 +36,19 @@ function MovieProfile() {
     setLoading(false);
   }
 
+  async function fetchCredits() {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/movie/${id.replace(
+        ":",
+        ""
+      )}/credits?api_key=72df3e39ae70f2a87b61200cd97ee96b&language=en-US`
+    );
+    setCredits(data.cast);
+  }
+
   useEffect(() => {
     fetchMovie();
+    fetchCredits();
   }, []);
 
   return (
@@ -63,10 +76,11 @@ function MovieProfile() {
                 alt="Film Poster"
                 className="film__poster"
               />
-              {film.release_date ? 
-              <div className="film__availability">Film Available</div>
-              : <div className="film__availability">Film Not Available</div>
-              }
+              {film.release_date ? (
+                <div className="film__availability">Film Available</div>
+              ) : (
+                <div className="film__availability">Film Not Available</div>
+              )}
             </div>
             <div className="film__info--container">
               <div className="film__title--conatiner">
@@ -145,6 +159,16 @@ function MovieProfile() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="cast__container">
+        {credits?.slice(0, 8)?.map((actor) => (
+          <Credit
+            key={actor.id}
+            name={actor.name}
+            character={actor.character}
+            photo={actor.profile_path}
+          />
+        ))}
       </div>
     </>
   );

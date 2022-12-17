@@ -1,0 +1,30 @@
+.credit__container{
+    width: 150px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.photo {
+  width: 150px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.text__container {
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+  align-items: center;
+  position: relative;
+  bottom: 0;
+}
+
+.name{
+    font-weight: 700;
+}
