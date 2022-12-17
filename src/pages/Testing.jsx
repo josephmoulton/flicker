@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../components/Header";
 import { Link, useParams } from "react-router-dom";
-import placeholderImage from "../assets/DefaultPoster.png"
+import placeholderImage from "../assets/DefaultPoster.png";
+import { useNavigate } from "react-router-dom";
 
 function Testing() {
   const { searchResult } = useParams();
@@ -12,7 +13,7 @@ function Testing() {
   const [loading, setLoading] = useState(true);
   const [pageNo, setPageNo] = useState(1);
   const [maxPages, setMaxPages] = useState(0);
-  
+
   function onSearch() {
     fetchMovies();
   }
@@ -30,6 +31,8 @@ function Testing() {
   useEffect(() => {
     fetchMovies();
   }, []);
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -59,25 +62,27 @@ function Testing() {
               <div className="user" key={movie.id}>
                 <div className="user-card">
                   <div className="user-card__container">
-                    <h3>{movie.title}</h3>
-                    <p>
-                      <b>Popularity:</b> {movie.popularity}
-                    </p>
-                    <p>
-                      <b>Release_date:</b> {movie.release_date}
-                    </p>
-                    <p>
-                      <b>Image:</b>
-                    </p>
-                    <img
-                      src={
-                        movie.poster_path
-                          ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                          : placeholderImage
-                      }
-                      alt=""
-                      className="movie__poster"
-                    />
+                    <Link to={`/profile:${movie.id}`}>
+                      <h3>{movie.title}</h3>
+                      <p>
+                        <b>Popularity:</b> {movie.popularity}
+                      </p>
+                      <p>
+                        <b>Release_date:</b> {movie.release_date}
+                      </p>
+                      <p>
+                        <b>Image:</b>
+                      </p>
+                      <img
+                        src={
+                          movie.poster_path
+                            ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                            : placeholderImage
+                        }
+                        alt=""
+                        className="movie__poster"
+                      />
+                    </Link>
                   </div>
                 </div>
               </div>

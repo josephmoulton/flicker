@@ -63,7 +63,10 @@ function MovieProfile() {
                 alt="Film Poster"
                 className="film__poster"
               />
+              {film.release_date ? 
               <div className="film__availability">Film Available</div>
+              : <div className="film__availability">Film Not Available</div>
+              }
             </div>
             <div className="film__info--container">
               <div className="film__title--conatiner">

@@ -155,8 +155,9 @@
 }
 
 .production__container{
-  display: flex;
-  justify-content: space-between;
-  padding-top: 2rem;
+  display: grid;
+  padding-top: 0.5rem;
+  grid-template-columns: repeat(3, 1fr);
   max-width: 50vw;
+  gap: 1rem;
 }
