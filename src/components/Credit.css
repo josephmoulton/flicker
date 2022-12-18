@@ -24,9 +24,19 @@
   align-items: center;
   position: relative;
   background-color: white;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+  height: 70px;
+  overflow: hidden;
 
 }
 
 .name{
     font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+}
+
+.character{
+  font-size: 14px;
+  text-align: center;
 }

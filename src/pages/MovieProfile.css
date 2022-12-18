@@ -110,7 +110,7 @@
   justify-content: space-between;
 }
 
-.user__container{
+.user__container {
   display: flex;
   align-items: center;
 }
@@ -129,32 +129,32 @@
   max-width: 3rem;
 }
 
-
-.budget , .revenue{
+.budget,
+.revenue {
   display: flex;
   align-items: center;
 }
 
-.money{
+.money {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-left: 6px;
 }
 
-.money__icon{
+.money__icon {
   color: #e9c46a;
 }
 
-.money__title{
+.money__title {
   font-weight: 700;
 }
 
-.film__info{
+.film__info {
   max-width: 50vw;
 }
 
-.production__container{
+.production__container {
   display: grid;
   padding-top: 0.5rem;
   grid-template-columns: repeat(3, 1fr);
@@ -162,11 +162,65 @@
   gap: 1rem;
 }
 
-.cast__container{
+.cast__container {
   max-width: 1100px;
   margin: 0 auto;
-  display: grid;
+  display: flex;
   padding-top: 0.5rem;
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
+  overflow: scroll;
+  overflow-y: hidden;
+  padding-bottom: 1rem;
+}
+
+.view-more__container {
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 295px;
+  border-radius: 5px;
+  padding: 0 40px;
+}
+
+.view-more {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 100ms ease-in-out;
+}
+
+.view-more:hover {
+  color: #d3d3d3;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(219, 219, 219);
+  border-radius: 999px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(219, 219, 219);
+}
+
+.cast__header {
+  font-weight: 600;
+  font-size: 1.4em;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 0 10px;
 }

@@ -15,6 +15,7 @@ import PaidIcon from "@mui/icons-material/Paid";
 import SellIcon from "@mui/icons-material/Sell";
 import IconWithTag from "../components/IconWithTag";
 import Credit from "../components/Credit";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 function MovieProfile() {
   const { id } = useParams();
@@ -160,8 +161,9 @@ function MovieProfile() {
           </div>
         </div>
       </div>
+      <h3 className="cast__header">Top Billed Cast</h3>
       <div className="cast__container">
-        {credits?.slice(0, 8)?.map((actor) => (
+        {credits?.slice(0, 9)?.map((actor) => (
           <Credit
             key={actor.id}
             name={actor.name}
@@ -169,6 +171,16 @@ function MovieProfile() {
             photo={actor.profile_path}
           />
         ))}
+        {credits>0 ? (
+          <div className="view-more__container">
+            <div className="view-more">
+              <p>View More</p>
+              <ArrowForwardIosIcon />
+            </div>
+          </div>
+        ) : (
+          <div>We don't have any cast added to this movie ¯\_(o_0)_/¯</div>
+        )}
       </div>
     </>
   );
