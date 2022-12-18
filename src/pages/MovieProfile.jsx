@@ -171,7 +171,7 @@ function MovieProfile() {
             photo={actor.profile_path}
           />
         ))}
-        {credits>0 ? (
+        {credits.length > 0 ? (
           <div className="view-more__container">
             <div className="view-more">
               <p>View More</p>
@@ -179,7 +179,7 @@ function MovieProfile() {
             </div>
           </div>
         ) : (
-          <div>We don't have any cast added to this movie ¯\_(o_0)_/¯</div>
+          <div>We don't have any cast added to this movie ¯\_(o)_/¯</div>
         )}
       </div>
     </>
