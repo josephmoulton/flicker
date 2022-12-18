@@ -16,6 +16,7 @@ import SellIcon from "@mui/icons-material/Sell";
 import IconWithTag from "../components/IconWithTag";
 import Credit from "../components/Credit";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 
 function MovieProfile() {
   const { id } = useParams();
@@ -179,9 +180,14 @@ function MovieProfile() {
             </div>
           </div>
         ) : (
-          <div>We don't have any cast added to this movie ¯\_(o)_/¯</div>
+          <div>We don't have any cast added to this movie ¯\_(o_0)_/¯</div>
         )}
       </div>
+      <div className="link__container">
+        <div className="cast__link">Full cast & crew</div>
+        <ArrowOutwardIcon />
+      </div>
+
     </>
   );
 }
