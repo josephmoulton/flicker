@@ -15,7 +15,12 @@
     padding-left: 1rem;
 }
 
-.name{
+.role{
+    text-align: left;
+}
+
+.credit__name{
     font-weight: 700;
     font-size: 20px;
+    text-align: left;
 }

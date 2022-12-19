@@ -1,6 +1,6 @@
 import React from "react";
 import "./MovieProfile.css";
-import { useParams , Link} from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import placeholderImage from "../assets/DefaultPoster.png";
@@ -174,17 +174,23 @@ function MovieProfile() {
         ))}
         {credits.length > 0 ? (
           <div className="view-more__container">
-            <div className="view-more">
+            <Link
+              to={`/profile:${id.replace(":", "")}/credits`}
+              className="cast__link"
+            >
               <p>View More</p>
               <ArrowForwardIosIcon />
-            </div>
+            </Link>
           </div>
         ) : (
           <div>We don't have any cast added to this movie ¯\_(o_0)_/¯</div>
         )}
       </div>
       <div className="link__container">
-        <Link to={`/profile:${id.replace(":", "")}/credits`} className="cast__link">
+        <Link
+          to={`/profile:${id.replace(":", "")}/credits`}
+          className="cast__link"
+        >
           Full cast & crew <ArrowOutwardIcon />
         </Link>
       </div>

@@ -16,8 +16,8 @@ const navigate = useNavigate();
       />
       <div className="movie__info">
         <div className="title">
-          <h2 className="movie__title">{title}</h2>
-          <span className="release-date">{releaseDate}</span>
+          <h2 className="movie__title">{title} <span className="release-date">{releaseDate}</span></h2>
+          
         </div>
         <p className="description">{description}</p>
       </div>

@@ -13,7 +13,7 @@
 .movie__poster {
   height: 140px;
   width: 94px;
-  object-fit: contain;
+  object-fit: cover;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
@@ -33,6 +33,7 @@
   border-bottom-right-radius: 10px;
   background-color: white;
   box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+  max-height: 140px;
 }
 
 .title__container {
@@ -44,7 +45,6 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  height: 60px;
 }
 
 .movie__title {

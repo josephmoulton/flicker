@@ -1,6 +1,6 @@
 import React from "react";
 import "./Credit.css";
-import avatar from "../assets/default-avatar.png";
+import avatar from "../assets/DefaultPoster.png";
 
 function Credit({ name, character, photo }) {
   return (

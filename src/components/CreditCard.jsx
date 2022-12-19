@@ -13,7 +13,7 @@ function CreditCard({ photo, name, releaseDate, role, id }) {
         className="credit__profile"
       />
       <div className="credit__info">
-        <h2 className="name">{name}</h2>
+        <h2 className="credit__name">{name}</h2>
         <span className="role">{role}</span>
       </div>
     </div>
