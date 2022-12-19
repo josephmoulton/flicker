@@ -1,0 +1,21 @@
+.credit__card{
+    display: flex;
+    align-items: center;
+}
+
+.credit__profile{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: 50% 20%;
+    border-radius: 10px;
+}
+
+.credit__info{
+    padding-left: 1rem;
+}
+
+.name{
+    font-weight: 700;
+    font-size: 20px;
+}

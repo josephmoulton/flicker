@@ -1,6 +1,6 @@
 import React from "react";
 import "./MovieProfile.css";
-import { useParams } from "react-router-dom";
+import { useParams , Link} from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import placeholderImage from "../assets/DefaultPoster.png";
@@ -16,7 +16,7 @@ import SellIcon from "@mui/icons-material/Sell";
 import IconWithTag from "../components/IconWithTag";
 import Credit from "../components/Credit";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 
 function MovieProfile() {
   const { id } = useParams();
@@ -184,10 +184,10 @@ function MovieProfile() {
         )}
       </div>
       <div className="link__container">
-        <div className="cast__link">Full cast & crew</div>
-        <ArrowOutwardIcon />
+        <Link to={`/profile:${id.replace(":", "")}/credits`} className="cast__link">
+          Full cast & crew <ArrowOutwardIcon />
+        </Link>
       </div>
-
     </>
   );
 }
