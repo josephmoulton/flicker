@@ -7,6 +7,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import placeholderImage from "../assets/DefaultPoster.png";
 import MovieCard from "../components/MovieCard";
+import SearchBox from "../components/SearchBox";
 
 function Results() {
   const { searchResult } = useParams();
@@ -31,22 +32,25 @@ function Results() {
 
   useEffect(() => {
     fetchMovies();
-  }, []);
+  }, [searchResult]);
 
   return (
     <>
       <Header />
+      <div className="search__wrapper">
+        <SearchBox result={searchResult} />
+      </div>
       <div className="container">
         <div className="row">
           <div className="result__list">
             {movies.map((movie) => (
               <MovieCard
-              key={movie.id}
-              id={movie.id}
-              photo={movie.poster_path}
-              title={movie.title}
-              releaseDate={movie.release_date}
-              description={movie.overview}
+                key={movie.id}
+                id={movie.id}
+                photo={movie.poster_path}
+                title={movie.title}
+                releaseDate={movie.release_date}
+                description={movie.overview}
               />
             ))}
           </div>

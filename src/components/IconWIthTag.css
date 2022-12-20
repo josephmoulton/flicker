@@ -5,11 +5,14 @@
     justify-content: center;
     height: 100px;
     border-radius: 20px;
+    overflow: hidden;
 }
 
 
 .logo{
     width: 100px;
+    height: 100px;
+    object-fit: scale-down;
     padding: 2px;
 }
 

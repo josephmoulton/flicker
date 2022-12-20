@@ -9,7 +9,7 @@ import Credits from "./pages/Credits";
 
 function App() {
   return (
-    <Router>
+    <Router forceRefresh={true}>
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />}></Route>
