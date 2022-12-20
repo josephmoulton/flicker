@@ -36,7 +36,7 @@ function Results() {
 
   return (
     <>
-      <Header />
+      <Header/>
       <div className="search__wrapper">
         <SearchBox result={searchResult} />
       </div>
