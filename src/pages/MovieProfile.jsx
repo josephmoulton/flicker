@@ -17,6 +17,7 @@ import IconWithTag from "../components/IconWithTag";
 import Credit from "../components/Credit";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import ColorThief from "colorthief/dist/color-thief.mjs";
 
 function MovieProfile() {
   const { id } = useParams();
@@ -24,6 +25,8 @@ function MovieProfile() {
   const [film, setFilm] = useState([]);
   const [loading, setLoading] = useState(true);
   const [credits, setCredits] = useState([]);
+  const [avgColor, setAvgColor] = useState([]);
+  const [imgLoad, setImgLoad] = useState(true)
 
   async function fetchMovie() {
     setLoading(true);
@@ -48,10 +51,32 @@ function MovieProfile() {
     setCredits(data.cast);
   }
 
+  async function fetchColor() {
+    const colorThief = new ColorThief();
+    const img = new Image();
+
+    img.addEventListener("load", function () {
+      const color = colorThief.getColor(img);
+      setAvgColor(`rgba(${color[0]},${color[1]}, ${color[2]}, 0.8)`);
+      setImgLoad(false)
+    });
+
+    let imageURL = `https://image.tmdb.org/t/p/w500${film?.poster_path}`;
+    let googleProxyURL =
+      "https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=2592000&url=";
+
+    img.crossOrigin = "Anonymous";
+    img.src = googleProxyURL + encodeURIComponent(imageURL);
+  }
+
   useEffect(() => {
     fetchMovie();
     fetchCredits();
   }, []);
+
+  if (loading === false) {
+    fetchColor();
+  }
 
   return (
     <>
@@ -59,14 +84,19 @@ function MovieProfile() {
       <div className="film__header">
         <img
           src={
-            film.backdrop_path
+            imgLoad
+              ? placeholderImage
+              : film.backdrop_path
               ? `https://image.tmdb.org/t/p/original${film.backdrop_path}`
               : placeholderImage
           }
           alt="film backdrop"
           className="film__backdrop"
         />
-        <div className="film__header--container">
+        <div
+          className="film__header--container"
+          style={{ background: avgColor }}
+        >
           <div className="film__data--container">
             <div className="film__poster--container">
               <img
@@ -175,7 +205,7 @@ function MovieProfile() {
         {credits.length > 0 ? (
           <div className="view-more__container">
             <Link
-              to={`/profile:${id.replace(":", "")}/credits`}
+              to={`/profile:${id.replace(":", "")}/credits:${avgColor}`}
               className="cast__link"
             >
               <p>View More</p>
@@ -188,7 +218,7 @@ function MovieProfile() {
       </div>
       <div className="link__container">
         <Link
-          to={`/profile:${id.replace(":", "")}/credits`}
+          to={`/profile:${id.replace(":", "")}/credits:${avgColor}`}
           className="cast__link"
         >
           Full cast & crew <ArrowOutwardIcon />

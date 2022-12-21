@@ -16,7 +16,7 @@ function App() {
           <Route path="/testing:searchResult" element={<Testing />}></Route>
           <Route path="/profile:id" element={<MovieProfile />}></Route>
           <Route path="/results:searchResult" element={<Results />}></Route>
-          <Route path="/profile:id/credits" element={<Credits />}></Route>
+          <Route path="/profile:id/credits:color" element={<Credits />}></Route>
         </Routes>
       </div>
     </Router>

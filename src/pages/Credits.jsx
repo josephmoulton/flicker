@@ -10,7 +10,7 @@ import MovieCard from "../components/MovieCard";
 import CreditCard from "../components/CreditCard";
 
 function Credits() {
-  const { id } = useParams();
+  const { id, color } = useParams();
   const [film, setFilm] = useState([]);
   const [credits, setCredits] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -45,7 +45,7 @@ function Credits() {
   return (
     <>
       <Header />
-      <div className="movie__banner">
+      <div className="movie__banner" style={{ background: color.replace(":", "") }}>
         <div className="banner__container">
           <img
             src={
@@ -97,7 +97,7 @@ function Credits() {
                 <div className="crew__title">
                   Crew <span className="length">{credits?.crew?.length}</span>
                 </div>
-                {credits?.crew?.map((credit) => (
+                {credits?.crew?.map((credit) => (     
                   <CreditCard
                     key={credit.id}
                     id={credit.id}
