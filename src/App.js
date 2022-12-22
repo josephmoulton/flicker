@@ -11,6 +11,7 @@ import Testing from "./pages/Testing";
 import MovieProfile from "./pages/MovieProfile";
 import Results from "./pages/Results";
 import Credits from "./pages/Credits";
+import GenreResults from "./pages/GenreResults";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
           <Route path="/profile:id" element={<MovieProfile />}></Route>
           <Route path="/results:searchResult" element={<Results />}></Route>
           <Route path="/profile:id/credits:color" element={<Credits />}></Route>
+          <Route path="/genreResults:genreId" element={<GenreResults />}></Route>
+          
         </Routes>
       </div>
   );

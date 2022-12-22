@@ -19,6 +19,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import ColorThief from "colorthief/dist/color-thief.mjs";
 import Footer from "../components/Footer";
+import MovieCard from "../components/MovieCard";
 
 function MovieProfile() {
   const { id } = useParams();
@@ -27,7 +28,8 @@ function MovieProfile() {
   const [loading, setLoading] = useState(true);
   const [credits, setCredits] = useState([]);
   const [avgColor, setAvgColor] = useState([]);
-  const [imgLoad, setImgLoad] = useState(true)
+  const [imgLoad, setImgLoad] = useState(true);
+  const [recommendations, setRecommendations] = useState([]);
 
   async function fetchMovie() {
     setLoading(true);
@@ -52,6 +54,16 @@ function MovieProfile() {
     setCredits(data.cast);
   }
 
+  async function fetchRecommendations() {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/movie/${id.replace(
+        ":",
+        ""
+      )}/recommendations?api_key=72df3e39ae70f2a87b61200cd97ee96b&language=en-US&page=1`
+    );
+    setRecommendations(data.results);
+  }
+
   async function fetchColor() {
     const colorThief = new ColorThief();
     const img = new Image();
@@ -59,7 +71,7 @@ function MovieProfile() {
     img.addEventListener("load", function () {
       const color = colorThief.getColor(img);
       setAvgColor(`rgba(${color[0]},${color[1]}, ${color[2]}, 0.8)`);
-      setImgLoad(false)
+      setImgLoad(false);
     });
 
     let imageURL = `https://image.tmdb.org/t/p/w500${film?.poster_path}`;
@@ -70,10 +82,21 @@ function MovieProfile() {
     img.src = googleProxyURL + encodeURIComponent(imageURL);
   }
 
+  async function fetchCredits() {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/movie/${id.replace(
+        ":",
+        ""
+      )}/credits?api_key=72df3e39ae70f2a87b61200cd97ee96b&language=en-US`
+    );
+    setCredits(data.cast);
+  }
+
   useEffect(() => {
     fetchMovie();
     fetchCredits();
-  }, []);
+    fetchRecommendations();
+  }, [id]);
 
   if (loading === false) {
     fetchColor();
@@ -128,7 +151,7 @@ function MovieProfile() {
                   <div className="dot"> • </div>
                   {genres.map((genre) => (
                     <div key={genre.id} className="genres__container">
-                      <span>{genre.name}</span>
+                      <Link to={`/genreResults:${genre.id}`}>{genre.name}</Link>
                       <div className="dot"> • </div>
                     </div>
                   ))}
@@ -225,7 +248,28 @@ function MovieProfile() {
           Full cast & crew <ArrowOutwardIcon />
         </Link>
       </div>
-      <Footer bg={avgColor}/>
+      <h3 className="cast__header">Movie Recommendations</h3>
+      <div className="reccomended__container">
+        {recommendations.length > 0 ? (
+          <div className="reccomended__container">
+            {recommendations?.slice(0, 5)?.map((movie) => (
+              <MovieCard
+                key={movie.id}
+                id={movie.id}
+                photo={movie.poster_path}
+                title={movie.title}
+                releaseDate={movie.release_date}
+                description={movie.overview}
+              />
+            ))}
+          </div>
+        ) : (
+          <div>
+            We don't have any recommendations for this movie ¯\_(o_0)_/¯
+          </div>
+        )}
+      </div>
+      <Footer bg={avgColor} />
     </>
   );
 }
