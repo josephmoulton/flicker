@@ -3,7 +3,7 @@
 }
 
 .accent__color {
-  color: #2a9d8f;
+  color: #e76f51;
 }
 
 .home__container {
@@ -20,7 +20,7 @@
   text-align: center;
   font-size: 42px;
   max-width: 500px;
-  color: #2a9d8f;
+  color: #e76f51;
   padding: 2rem 0;
   text-align: center;
 }
@@ -55,7 +55,7 @@
 .home__search--icon {
   display: flex;
   justify-content: center;
-  background-color: #2a9d8f;
+  background-color: #e76f51;
   padding: 10px 30px;
   border-radius: 9999px;
   cursor: pointer;

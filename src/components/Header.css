@@ -1,6 +1,7 @@
 .header {
-  color: #2a9d8f;
+  color: white;
   padding: 20px 0;
+  background-color: #e76f51;
 }
 
 .container {
@@ -15,13 +16,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
 }
 
 .logo__container {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .logo__container > a {
@@ -40,8 +41,8 @@
 }
 
 .header__link--button {
-  color: #fff;
-  background-color: #2a9d8f;
+  color: #e76f51;
+  background-color: white;
 }
 
 .header__link--button:hover {
