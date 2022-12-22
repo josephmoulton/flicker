@@ -18,6 +18,7 @@ import Credit from "../components/Credit";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import ColorThief from "colorthief/dist/color-thief.mjs";
+import Footer from "../components/Footer";
 
 function MovieProfile() {
   const { id } = useParams();
@@ -224,6 +225,7 @@ function MovieProfile() {
           Full cast & crew <ArrowOutwardIcon />
         </Link>
       </div>
+      <Footer bg={avgColor}/>
     </>
   );
 }

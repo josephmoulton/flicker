@@ -99,6 +99,11 @@
 .overview__text {
   font-size: 14px;
   font-weight: 400;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .stats__container {
