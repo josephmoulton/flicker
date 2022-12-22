@@ -3,7 +3,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    transition: all ease 200ms;    
+    transition: all ease 200ms;   
+    cursor: pointer; 
 }
 
 .credit__container:hover{

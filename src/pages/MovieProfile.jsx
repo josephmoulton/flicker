@@ -220,6 +220,7 @@ function MovieProfile() {
       <div className="cast__container">
         {credits?.slice(0, 9)?.map((actor) => (
           <Credit
+            id={actor.id}
             key={actor.id}
             name={actor.name}
             character={actor.character}

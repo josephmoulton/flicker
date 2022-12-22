@@ -1,0 +1,31 @@
+.content{
+    padding: 2rem 1rem;
+    display: flex;
+}
+
+.personal{
+    max-width: 300px;
+}
+
+.cast__img{
+    width: 100%;
+    object-fit: contain;
+    border-radius: 25px;
+}
+
+.personal__info{
+    padding-top: 1rem;
+}
+
+.personal__sub{
+    padding-top: 1rem;
+}
+
+.personal__p{
+    color: gray;
+}
+
+.info{
+    background-color: lightgray;
+    width: 100%;
+}
