@@ -1,6 +1,12 @@
 .credit__card{
     display: flex;
     align-items: center;
+    
+}
+
+.credit__profile:hover{
+    transform: scale(1.1);
+    filter: drop-shadow(1px 1px 5px #242424);
 }
 
 .credit__profile{
@@ -9,6 +15,8 @@
     object-fit: cover;
     object-position: 50% 20%;
     border-radius: 10px;
+    cursor: pointer;
+    transition: all ease 200ms;
 }
 
 .credit__info{

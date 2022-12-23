@@ -5,13 +5,13 @@ import Header from "../components/Header";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import defaultAvatar from "../assets/default-avatar.png";
+import placeholderImage from "../assets/DefaultPoster.png";
 
 function CrewProfile() {
   const { id } = useParams();
   const crewId = id.replace(":", "");
   const [personalDetails, setPersonalDetails] = useState([]);
-  const [castWork, setCastWork] = useState([]);
-  const [crewWork, setCrewWork] = useState([]);
+  const [work, setWork] = useState([]);
 
   async function fetchData() {
     const DetailAPI = `https://api.themoviedb.org/3/person/${crewId}?api_key=72df3e39ae70f2a87b61200cd97ee96b&language=en-US`;
@@ -23,8 +23,11 @@ function CrewProfile() {
         const detailsData = allData[0];
         const moviesData = allData[1];
         setPersonalDetails(detailsData.data);
-        setCastWork(moviesData.data.cast);
-        setCrewWork(moviesData.data.crew);
+        setWork(moviesData.data.cast?.concat(moviesData.data.crew)).sort(
+          function (a, b) {
+            return a - b;
+          }
+        );
       })
     );
   }
@@ -70,7 +73,37 @@ function CrewProfile() {
               ))}
             </div>
           </div>
-          <div className="info"></div>
+          <div className="info">
+            <h1 className="cast__name">{personalDetails.name}</h1>
+            <h3 className="cast__bio--title">Biography</h3>
+            <p className="cast__bio">
+              {personalDetails.biography ? (
+                personalDetails.biography
+              ) : (
+                <>We have no recorded biography for this person.</>
+              )}
+            </p>
+            <div className="known__container">
+              {work
+                .sort((a, b) => parseFloat(a.order) - parseFloat(b.order))
+                .sort(
+                  (a, b) => parseFloat(b.popularity) - parseFloat(a.popularity)
+                )
+                .slice(0, 10)
+                .map((movie) => (
+                  <img
+                    key={movie.id}
+                    src={
+                      movie.poster_path
+                        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                        : placeholderImage
+                    }
+                    alt=""
+                    className="work__poster"
+                  />
+                ))}
+            </div>
+          </div>
         </div>
       </div>
     </>
