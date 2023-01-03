@@ -6,8 +6,10 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import defaultAvatar from "../assets/default-avatar.png";
 import placeholderImage from "../assets/DefaultPoster.png";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function CrewProfile() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const crewId = id.replace(":", "");
   const [personalDetails, setPersonalDetails] = useState([]);
@@ -93,6 +95,7 @@ function CrewProfile() {
                 .map((movie) => (
                   <img
                     key={movie.id}
+                    onClick={() => navigate(`/profile:${movie.id}`)}
                     src={
                       movie.poster_path
                         ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`

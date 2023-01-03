@@ -43,6 +43,7 @@
 .header__link--button {
   color: #e76f51;
   background-color: white;
+  cursor:not-allowed;
 }
 
 .header__link--button:hover {
